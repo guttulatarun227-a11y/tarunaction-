@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assessments – AI FORCE Portal</title>
+  <meta name="description" content="Official Competency Knowledge Checks & Assessments." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-robot"></i></div>
+        <span>AI <span class="gradient-text">FORCE</span></span>
+        <span class="brand-badge">Tests</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="ai-assistant.html" class="nav-link">AI Assistant</a>
+        <a href="live-classes.html" class="nav-link">Live Classes</a>
+        <a href="assessments.html" class="nav-link active">Assessments</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+        <button class="hamburger-btn" aria-label="Open mobile menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="courses.html" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> Courses</a>
+      <a href="ai-assistant.html" class="mobile-nav-link"><i class="fa-solid fa-robot"></i> AI Assistant</a>
+      <a href="live-classes.html" class="mobile-nav-link"><i class="fa-solid fa-video"></i> Live Classes</a>
+      <a href="assessments.html" class="mobile-nav-link active"><i class="fa-solid fa-clipboard-check"></i> Assessments</a>
+      <a href="dashboard.html" class="mobile-nav-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+    </div>
+  </div>
+  <div class="nav-backdrop"></div>
+
+  <!-- Main Assessments Container -->
+  <main class="section">
+    <div class="container">
+      
+      <!-- Assessment Card -->
+      <div class="assessment-card" id="quiz-card-container">
+        
+        <!-- Quiz Ongoing View -->
+        <div id="quiz-active-view">
+          <div class="quiz-header">
+            <div>
+              <span class="section-tag" style="margin-bottom:0.25rem;">Capacity Benchmark</span>
+              <h2 style="font-size:1.15rem;font-weight:700;" id="quiz-subject">
+                Artificial Intelligence & Machine Learning Assessment
+              </h2>
+            </div>
+            <div style="text-align:right;">
+              <span style="font-size:0.85rem;font-weight:700;color:var(--primary);" id="quiz-step-text">
+                Question 1 of 5
+              </span>
+              <div style="font-size:0.75rem;color:var(--text-muted);">Passing Score: 70%</div>
+            </div>
+          </div>
+
+          <!-- Question Body -->
+          <div id="quiz-question-container">
+            <h3 class="quiz-question-title" id="quiz-question-text">
+              What is Artificial Intelligence?
+            </h3>
+
+            <!-- Options (Desktop comfortable, Mobile full width) -->
+            <div class="options-container" id="quiz-options-list">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Bottom Navigation Controls -->
+          <div class="quiz-actions">
+            <button class="btn btn-secondary" id="btn-quiz-prev" disabled>
+              <i class="fa-solid fa-arrow-left"></i> Previous
+            </button>
+            <div style="display:flex;gap:0.75rem;">
+              <button class="btn btn-primary" id="btn-quiz-next">
+                Next <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <button class="btn btn-primary" id="btn-quiz-submit" style="display:none;background:var(--success);">
+                <i class="fa-solid fa-check"></i> Submit Assessment
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz Result Page View (Hidden until submitted) -->
+        <div id="quiz-result-view" class="quiz-result-view" style="display:none;">
+          <div class="score-circle">
+            <span class="score-number" id="result-score-num">4/5</span>
+            <span class="score-percent" id="result-percent-num">80%</span>
+          </div>
+
+          <h2 style="font-size:1.65rem;font-weight:800;margin-bottom:0.5rem;" id="result-status-title">
+            Assessment Completed!
+          </h2>
+          <p style="font-size:0.95rem;color:var(--text-secondary);max-width:500px;margin:0 auto 1.5rem;" id="result-feedback-text">
+            Congratulations! You have demonstrated verified proficiency in fundamental AI & Machine Learning competencies.
+          </p>
+
+          <!-- Breakdown -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:400px;margin:0 auto 2rem;text-align:left;">
+            <div style="background:var(--bg-secondary);padding:1rem;border-radius:var(--radius-md);border-left:4px solid var(--success);">
+              <div style="font-size:0.8rem;color:var(--text-muted);font-weight:700;">CORRECT ANSWERS</div>
+              <div style="font-size:1.5rem;font-weight:800;color:var(--success);" id="result-correct-count">4</div>
+            </div>
+            <div style="background:var(--bg-secondary);padding:1rem;border-radius:var(--radius-md);border-left:4px solid var(--danger);">
+              <div style="font-size:0.8rem;color:var(--text-muted);font-weight:700;">INCORRECT ANSWERS</div>
+              <div style="font-size:1.5rem;font-weight:800;color:var(--danger);" id="result-incorrect-count">1</div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+            <button class="btn btn-secondary" onclick="restartQuiz()">
+              <i class="fa-solid fa-rotate-left"></i> Retake Assessment
+            </button>
+            <a href="certificates.html" class="btn btn-primary" id="btn-claim-cert">
+              <i class="fa-solid fa-award"></i> View & Claim Certificate
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Assessment State & Questions Bank
+    const QUIZ_QUESTIONS = [
+      {
+        question: "What is Artificial Intelligence?",
+        options: [
+          "Computer graphics and 3D rendering algorithms",
+          "Simulation of human intelligence in machines programmed to think and learn",
+          "Relational database indexing and storage mechanisms",
+          "Local area network routing protocols"
+        ],
+        correct: 1
+      },
+      {
+        question: "Which of the following is an example of Supervised Learning?",
+        options: [
+          "K-Means Clustering on unlabelled customer transactions",
+          "Predicting house prices using labelled historic sales features",
+          "Dimensionality reduction using Principal Component Analysis",
+          "Playing Chess using trial-and-error reward mechanisms"
+        ],
+        correct: 1
+      },
+      {
+        question: "In Machine Learning, what is the primary role of Gradient Descent?",
+        options: [
+          "To increase dataset size through image rotation",
+          "To minimize the objective loss function by iteratively updating model parameters",
+          "To encrypt neural network weights for secure cloud transmission",
+          "To visualize high-dimensional data in 2D graphs"
+        ],
+        correct: 1
+      },
+      {
+        question: "What core mechanism enables Transformer models (like GPT) to capture contextual relationships across sequences?",
+        options: [
+          "Multi-Head Self-Attention",
+          "Recurrent Feedback Loops",
+          "Linear Convolutional Kernels",
+          "Depth-First Search Heuristics"
+        ],
+        correct: 0
+      },
+      {
+        question: "In organizational capacity building, why is continuous competency assessment vital?",
+        options: [
+          "To eliminate the need for any human instructors",
+          "To verify demonstrable skill acquisition and identify learning gaps in real time",
+          "To strictly prevent access to open-source software libraries",
+          "To force all employees into identical career tracks"
+        ],
+        correct: 1
+      }
+    ];
+
+    let currentQuestionIdx = 0;
+    let selectedAnswers = new Array(QUIZ_QUESTIONS.length).fill(null);
+
+    function renderQuestion() {
+      const q = QUIZ_QUESTIONS[currentQuestionIdx];
+      document.getElementById("quiz-step-text").textContent = `Question ${currentQuestionIdx + 1} of ${QUIZ_QUESTIONS.length}`;
+      document.getElementById("quiz-question-text").textContent = q.question;
+
+      const optionsContainer = document.getElementById("quiz-options-list");
+      const optionLetters = ["A", "B", "C", "D"];
+
+      optionsContainer.innerHTML = q.options.map((opt, idx) => {
+        const isSelected = selectedAnswers[currentQuestionIdx] === idx;
+        return `
+          <button type="button" class="quiz-option-btn ${isSelected ? 'selected' : ''}" onclick="selectOption(${idx})">
+            <span class="option-indicator">${optionLetters[idx]}</span>
+            <span>${opt}</span>
+          </button>
+        `;
+      }).join("");
+
+      // Buttons state
+      document.getElementById("btn-quiz-prev").disabled = currentQuestionIdx === 0;
+
+      const isLast = currentQuestionIdx === QUIZ_QUESTIONS.length - 1;
+      document.getElementById("btn-quiz-next").style.display = isLast ? "none" : "inline-flex";
+      document.getElementById("btn-quiz-submit").style.display = isLast ? "inline-flex" : "none";
+    }
+
+    window.selectOption = function(optIdx) {
+      selectedAnswers[currentQuestionIdx] = optIdx;
+      renderQuestion();
+    };
+
+    document.getElementById("btn-quiz-prev").addEventListener("click", () => {
+      if (currentQuestionIdx > 0) {
+        currentQuestionIdx--;
+        renderQuestion();
+      }
+    });
+
+    document.getElementById("btn-quiz-next").addEventListener("click", () => {
+      if (selectedAnswers[currentQuestionIdx] === null) {
+        window.showToast("Please choose an answer option before proceeding.", "info");
+        return;
+      }
+      if (currentQuestionIdx < QUIZ_QUESTIONS.length - 1) {
+        currentQuestionIdx++;
+        renderQuestion();
+      }
+    });
+
+    document.getElementById("btn-quiz-submit").addEventListener("click", () => {
+      if (selectedAnswers[currentQuestionIdx] === null) {
+        window.showToast("Please select an answer for the final question.", "info");
+        return;
+      }
+
+      // Calculate score
+      let correct = 0;
+      QUIZ_QUESTIONS.forEach((q, idx) => {
+        if (selectedAnswers[idx] === q.correct) {
+          correct++;
+        }
+      });
+
+      const percentage = Math.round((correct / QUIZ_QUESTIONS.length) * 100);
+
+      // Save to user progress in localStorage
+      const user = JSON.parse(localStorage.getItem("aiforce_user") || "{}");
+      user.overallProgress = Math.min(100, (user.overallProgress || 70) + 5);
+      localStorage.setItem("aiforce_user", JSON.stringify(user));
+
+      // Show results view
+      document.getElementById("quiz-active-view").style.display = "none";
+      document.getElementById("quiz-result-view").style.display = "block";
+
+      document.getElementById("result-score-num").textContent = `${correct}/${QUIZ_QUESTIONS.length}`;
+      document.getElementById("result-percent-num").textContent = `${percentage}%`;
+      document.getElementById("result-correct-count").textContent = correct;
+      document.getElementById("result-incorrect-count").textContent = QUIZ_QUESTIONS.length - correct;
+
+      if (percentage >= 70) {
+        document.getElementById("result-status-title").textContent = "Competency Benchmark Passed! 🎉";
+        document.getElementById("result-status-title").style.color = "var(--success)";
+        document.getElementById("btn-claim-cert").style.display = "inline-flex";
+      } else {
+        document.getElementById("result-status-title").textContent = "Score Below 70% Threshold";
+        document.getElementById("result-status-title").style.color = "var(--danger)";
+        document.getElementById("result-feedback-text").textContent = "We recommend reviewing the AI Foundations syllabus and retaking the assessment.";
+        document.getElementById("btn-claim-cert").style.display = "none";
+      }
+    });
+
+    window.restartQuiz = function() {
+      currentQuestionIdx = 0;
+      selectedAnswers = new Array(QUIZ_QUESTIONS.length).fill(null);
+      document.getElementById("quiz-result-view").style.display = "none";
+      document.getElementById("quiz-active-view").style.display = "block";
+      renderQuestion();
+    };
+
+    // Initial Render
+    renderQuestion();
+  </script>
+</body>
+</html>

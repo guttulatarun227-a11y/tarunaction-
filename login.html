@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login – AI FORCE Portal</title>
+  <meta name="description" content="Sign in to AI FORCE Capacity Connect Learning Management Portal." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-robot"></i></div>
+        <span>AI <span class="gradient-text">FORCE</span></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="ai-assistant.html" class="nav-link">AI Assistant</a>
+        <a href="live-classes.html" class="nav-link">Live Classes</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+        <button class="hamburger-btn" aria-label="Open mobile menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="courses.html" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> Courses</a>
+      <a href="ai-assistant.html" class="mobile-nav-link"><i class="fa-solid fa-robot"></i> AI Assistant</a>
+      <a href="register.html" class="mobile-nav-link"><i class="fa-solid fa-user-plus"></i> Register</a>
+    </div>
+  </div>
+  <div class="nav-backdrop"></div>
+
+  <!-- Authentication Main View -->
+  <main class="auth-page">
+    <div class="auth-wrapper">
+      
+      <!-- Left Banner (Desktop 2-Column) -->
+      <div class="auth-banner">
+        <div class="auth-banner-header">
+          <div class="brand-logo">
+            <div class="logo-icon"><i class="fa-solid fa-robot"></i></div>
+            <span>AI FORCE</span>
+          </div>
+        </div>
+
+        <div class="auth-banner-content">
+          <h2>Capacity Connect Portal</h2>
+          <p>
+            Access organizational capacity modules, real-time AI guidance, interactive live sessions, and verifiable digital certifications.
+          </p>
+          <div class="auth-features-list">
+            <div class="auth-feature-item">
+              <i class="fa-solid fa-check"></i> Personalized Competency Pathways
+            </div>
+            <div class="auth-feature-item">
+              <i class="fa-solid fa-check"></i> 24/7 AI-Powered Doubt Resolution
+            </div>
+            <div class="auth-feature-item">
+              <i class="fa-solid fa-check"></i> Hands-On Interactive Assessments
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-banner-footer">
+          Centralized Web Platform • SIH Capacity Connect
+        </div>
+      </div>
+
+      <!-- Right Form (Mobile & Desktop) -->
+      <div class="auth-form-container">
+        <div class="auth-header">
+          <h1>Welcome Back</h1>
+          <p>Sign in to continue your learning journey</p>
+        </div>
+
+        <!-- Quick Demo Credentials Filler -->
+        <div class="demo-accounts-box">
+          <div class="demo-accounts-title">
+            <i class="fa-solid fa-bolt"></i> Quick Demo Logins (Click to Fill)
+          </div>
+          <div class="demo-buttons">
+            <button type="button" class="btn-demo" id="btn-demo-student">
+              <i class="fa-solid fa-user-graduate"></i> Student Demo
+            </button>
+            <button type="button" class="btn-demo" id="btn-demo-admin">
+              <i class="fa-solid fa-shield-halved"></i> Admin Demo
+            </button>
+            <button type="button" class="btn-demo" id="btn-demo-faculty">
+              <i class="fa-solid fa-chalkboard-user"></i> Faculty Demo
+            </button>
+          </div>
+        </div>
+
+        <form class="auth-form" id="form-login">
+          <div class="form-group">
+            <label class="form-label" for="login-email">Email or Student/Employee ID</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-envelope input-icon"></i>
+              <input type="text" id="login-email" class="form-input" placeholder="e.g. student@aiforce.edu" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="login-password">Password</label>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required />
+              <button type="button" class="input-toggle-btn" aria-label="Toggle password visibility">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" id="remember-me-checkbox" checked />
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot-link" onclick="alert('Demo reset instructions sent to registered email.'); return false;">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;margin-top:0.5rem;" id="btn-submit-login">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In to Portal
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          Don't have an account yet? <a href="register.html">Create an Account</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

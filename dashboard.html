@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard – AI FORCE Portal</title>
+  <meta name="description" content="Student and Learner Dashboard for AI FORCE Capacity Connect LMS." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <div class="app-layout">
+
+    <!-- =======================================================================
+         Desktop Sidebar / Mobile Collapsible Drawer
+         ======================================================================= -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon"><i class="fa-solid fa-robot"></i></div>
+          <span>AI <span class="gradient-text">FORCE</span></span>
+        </a>
+        <button class="sidebar-close-btn" aria-label="Close sidebar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-title">Menu</div>
+        <a href="dashboard.html" class="sidebar-link active" id="side-link-dashboard">
+          <i class="fa-solid fa-gauge-high"></i> <span>Dashboard</span>
+        </a>
+        <a href="courses.html" class="sidebar-link" id="side-link-courses">
+          <i class="fa-solid fa-graduation-cap"></i> <span>Courses</span>
+          <span class="badge-counter" id="side-badge-courses">12</span>
+        </a>
+        <a href="ai-assistant.html" class="sidebar-link" id="side-link-ai">
+          <i class="fa-solid fa-robot"></i> <span>AI Assistant</span>
+        </a>
+        <a href="live-classes.html" class="sidebar-link" id="side-link-live">
+          <i class="fa-solid fa-video"></i> <span>Live Classes</span>
+          <span class="badge-counter" style="background:#10b981;">Live</span>
+        </a>
+        <a href="assessments.html" class="sidebar-link" id="side-link-tests">
+          <i class="fa-solid fa-clipboard-check"></i> <span>Assessments</span>
+        </a>
+        <a href="certificates.html" class="sidebar-link" id="side-link-cert">
+          <i class="fa-solid fa-award"></i> <span>Certificates</span>
+        </a>
+
+        <div class="sidebar-nav-title" style="margin-top:0.75rem;">Account</div>
+        <a href="profile.html" class="sidebar-link" id="side-link-profile">
+          <i class="fa-solid fa-user"></i> <span>Profile</span>
+        </a>
+        <a href="admin.html" class="sidebar-link" id="side-link-admin">
+          <i class="fa-solid fa-shield-halved"></i> <span>Admin View</span>
+        </a>
+        <a href="#" onclick="logoutUser(); return false;" class="sidebar-link" style="color:var(--danger);" id="side-link-logout">
+          <i class="fa-solid fa-arrow-right-from-bracket" style="color:var(--danger);"></i> <span>Logout</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar-sm" id="sidebar-user-avatar">A</div>
+          <div class="user-info-text">
+            <div class="user-name-text" id="sidebar-user-name">Aarav Sharma</div>
+            <div class="user-role-text" id="sidebar-user-role">Student • AI & Data Science</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-backdrop"></div>
+
+    <!-- =======================================================================
+         Main Content Area
+         ======================================================================= -->
+    <div class="main-content-wrapper">
+      
+      <!-- Top App Bar -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle-btn" id="dashboard-menu-toggle" aria-label="Toggle Sidebar Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="page-title-badge">
+            AI FORCE <span class="gradient-text">Portal</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="theme-toggle-btn" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <button class="btn-icon" aria-label="Notifications" onclick="window.showToast('You have 2 new competency milestones pending!', 'info')">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-dot"></span>
+          </button>
+
+          <a href="profile.html" class="btn-icon" title="View Profile">
+            <i class="fa-regular fa-user"></i>
+          </a>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <main class="dashboard-body">
+
+        <!-- Welcome Banner -->
+        <div class="welcome-card">
+          <div class="welcome-card-content">
+            <h1>Welcome, <span id="welcome-user-name">Student</span>! 👋</h1>
+            <p>
+              Continue your capacity building track. Your current competency index is <strong>72%</strong> across Machine Learning and Cloud Architectures.
+            </p>
+            <div class="welcome-actions">
+              <a href="courses.html" class="btn btn-secondary btn-sm" style="background:#ffffff;color:#1e1b4b;font-weight:700;">
+                <i class="fa-solid fa-play"></i> Resume Active Lesson
+              </a>
+              <a href="ai-assistant.html" class="btn btn-secondary btn-sm" style="background:rgba(255,255,255,0.2);color:#ffffff;border-color:rgba(255,255,255,0.3);">
+                <i class="fa-solid fa-sparkles"></i> Ask AI Doubt Assistant
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric Stat Cards (Desktop 4-col, Mobile Single-col) -->
+        <div class="stats-grid">
+          <!-- Stat 1: Total Courses -->
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-blue">
+              <i class="fa-solid fa-book-bookmark"></i>
+            </div>
+            <div class="stat-details">
+              <div class="stat-value" id="stat-enrolled-count">12</div>
+              <div class="stat-label">Enrolled Courses</div>
+            </div>
+          </div>
+
+          <!-- Stat 2: Completed -->
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-green">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="stat-details">
+              <div class="stat-value" id="stat-completed-count">05</div>
+              <div class="stat-label">Completed Modules</div>
+            </div>
+          </div>
+
+          <!-- Stat 3: In-Progress -->
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-amber">
+              <i class="fa-solid fa-bars-progress"></i>
+            </div>
+            <div class="stat-details">
+              <div class="stat-value" id="stat-progress-count">03</div>
+              <div class="stat-label">In-Progress</div>
+            </div>
+          </div>
+
+          <!-- Stat 4: Overall Progress -->
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-purple">
+              <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <div class="stat-details">
+              <div class="stat-value" id="stat-overall-percentage">72%</div>
+              <div class="stat-label">Average Competency</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard 2-Column Grid -->
+        <div class="dashboard-grid">
+          
+          <!-- Left Column: Competency Mastery & Active Courses -->
+          <div style="display:flex;flex-direction:column;gap:1.5rem;">
+            
+            <!-- Competency Progress Chart -->
+            <div class="card-panel">
+              <div class="panel-header">
+                <h2 class="panel-title"><i class="fa-solid fa-diagram-project" style="color:var(--primary);margin-right:0.5rem;"></i> Competency Framework Progress</h2>
+                <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600;">Verified Benchmarks</span>
+              </div>
+              
+              <div class="competency-bars">
+                <div class="competency-item">
+                  <div class="competency-info">
+                    <span>Generative AI & LLM Systems</span>
+                    <span style="color:var(--primary);">88%</span>
+                  </div>
+                  <div class="competency-bar-track">
+                    <div class="competency-bar-fill" style="width: 88%;"></div>
+                  </div>
+                </div>
+
+                <div class="competency-item">
+                  <div class="competency-info">
+                    <span>Cloud Architecture & Kubernetes</span>
+                    <span style="color:var(--secondary);">65%</span>
+                  </div>
+                  <div class="competency-bar-track">
+                    <div class="competency-bar-fill" style="width: 65%; background: linear-gradient(135deg, #06b6d4, #3b82f6);"></div>
+                  </div>
+                </div>
+
+                <div class="competency-item">
+                  <div class="competency-info">
+                    <span>Zero-Trust Cybersecurity</span>
+                    <span style="color:#10b981;">78%</span>
+                  </div>
+                  <div class="competency-bar-track">
+                    <div class="competency-bar-fill" style="width: 78%; background: linear-gradient(135deg, #10b981, #059669);"></div>
+                  </div>
+                </div>
+
+                <div class="competency-item">
+                  <div class="competency-info">
+                    <span>Applied Machine Learning</span>
+                    <span style="color:#8b5cf6;">100% (Certified)</span>
+                  </div>
+                  <div class="competency-bar-track">
+                    <div class="competency-bar-fill" style="width: 100%; background: linear-gradient(135deg, #8b5cf6, #7c3aed);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- In-Progress Enrolled Courses -->
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+                <h2 style="font-size:1.2rem;font-weight:800;">Continue Learning</h2>
+                <a href="courses.html" class="btn btn-outline btn-sm">All Courses <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+              <div class="courses-grid" id="dashboard-enrolled-courses" style="grid-template-columns:1fr;">
+                <!-- Populated by dashboard.js -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Live Session & Recent Activities -->
+          <div style="display:flex;flex-direction:column;gap:1.5rem;">
+            
+            <!-- Upcoming Live Session Card -->
+            <div class="card-panel" style="border-left:4px solid var(--primary);">
+              <div class="panel-header">
+                <h3 class="panel-title" style="font-size:1.05rem;"><i class="fa-solid fa-broadcast-tower" style="color:var(--danger);margin-right:0.4rem;"></i> Live Classroom</h3>
+                <span class="badge-status badge-active"><span class="pulse-dot"></span> In 15 Mins</span>
+              </div>
+              <p style="font-weight:700;font-size:0.95rem;margin-bottom:0.35rem;">
+                LLM Fine-Tuning & Quantization Workshop
+              </p>
+              <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.25rem;">
+                Instructor: Dr. Anya Sharma • Interactive Lab
+              </p>
+              <a href="live-classes.html" class="btn btn-primary btn-sm" style="width:100%;">
+                <i class="fa-solid fa-video"></i> Enter Live Classroom
+              </a>
+            </div>
+
+            <!-- Quick AI Assistant Card -->
+            <div class="card-panel" style="background:var(--primary-light);">
+              <h3 style="font-size:1.05rem;font-weight:800;margin-bottom:0.5rem;color:var(--primary);">
+                <i class="fa-solid fa-robot"></i> AI Doubt Assistant
+              </h3>
+              <p style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:1rem;">
+                Have questions about transformers, gradient descent, or Kubernetes pods? Ask your personal 24/7 AI tutor now.
+              </p>
+              <a href="ai-assistant.html" class="btn btn-primary btn-sm" style="width:100%;">
+                <i class="fa-solid fa-paper-plane"></i> Launch AI Chat
+              </a>
+            </div>
+
+            <!-- Recent Activity Timeline -->
+            <div class="card-panel">
+              <div class="panel-header">
+                <h3 class="panel-title" style="font-size:1.05rem;">Recent Learning Activity</h3>
+              </div>
+              <div class="activity-list">
+                <div class="activity-item">
+                  <i class="fa-solid fa-award"></i>
+                  <div class="activity-text">
+                    <strong>Earned Certificate</strong>
+                    <span>Applied Machine Learning</span>
+                    <div class="activity-time">2 days ago</div>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <div class="activity-text">
+                    <strong>Completed Assessment</strong>
+                    <span>Scored 94% on Deep Neural Networks</span>
+                    <div class="activity-time">3 days ago</div>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <i class="fa-solid fa-book-open-reader"></i>
+                  <div class="activity-text">
+                    <strong>Finished Module 3</strong>
+                    <span>Retrieval-Augmented Generation</span>
+                    <div class="activity-time">5 days ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

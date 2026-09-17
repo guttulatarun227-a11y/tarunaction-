@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Assistant – AI FORCE Portal</title>
+  <meta name="description" content="ChatGPT-style AI Doubt Resolution Assistant for Capacity Connect." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body style="overflow:hidden;">
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-robot"></i></div>
+        <span>AI <span class="gradient-text">FORCE</span></span>
+        <span class="brand-badge">Assistant</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="ai-assistant.html" class="nav-link active">AI Assistant</a>
+        <a href="live-classes.html" class="nav-link">Live Classes</a>
+        <a href="assessments.html" class="nav-link">Assessments</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+        <button class="hamburger-btn" aria-label="Open mobile menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="courses.html" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> Courses</a>
+      <a href="ai-assistant.html" class="mobile-nav-link active"><i class="fa-solid fa-robot"></i> AI Assistant</a>
+      <a href="live-classes.html" class="mobile-nav-link"><i class="fa-solid fa-video"></i> Live Classes</a>
+      <a href="assessments.html" class="mobile-nav-link"><i class="fa-solid fa-clipboard-check"></i> Assessments</a>
+      <a href="dashboard.html" class="mobile-nav-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+    </div>
+  </div>
+  <div class="nav-backdrop"></div>
+
+  <!-- ChatGPT-Style Full-Screen Container -->
+  <main class="ai-assistant-container">
+    
+    <!-- Top Action Bar for Chat -->
+    <div class="chat-header-bar">
+      <div class="chat-header-info">
+        <div class="chat-ai-avatar">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div>
+          <h1 style="font-size:1.15rem;font-weight:800;line-height:1.2;">AI FORCE AI Assistant</h1>
+          <div style="font-size:0.75rem;color:var(--success);font-weight:600;display:flex;align-items:center;gap:0.35rem;">
+            <span class="pulse-dot"></span> Online • Ready for Doubt Resolution
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:0.5rem;">
+        <button class="btn btn-secondary btn-sm" id="btn-clear-chat" title="Clear Conversation">
+          <i class="fa-regular fa-trash-can"></i> Clear Chat
+        </button>
+      </div>
+    </div>
+
+    <!-- Suggested Question Chips Bar -->
+    <div class="suggested-chips-container">
+      <button class="chip-btn" data-prompt="Explain machine learning vs deep learning">
+        💡 Explain Machine Learning vs Deep Learning
+      </button>
+      <button class="chip-btn" data-prompt="How does Gradient Descent work?">
+        📐 How does Gradient Descent work?
+      </button>
+      <button class="chip-btn" data-prompt="Explain Kubernetes Pods and Microservices">
+        ☁️ Kubernetes Pods & Microservices
+      </button>
+      <button class="chip-btn" data-prompt="What is Zero-Trust Security Architecture?">
+        🛡️ Zero-Trust Security Architecture
+      </button>
+      <button class="chip-btn" data-prompt="What is the problem statement of Capacity Connect?">
+        🎯 What is Capacity Connect?
+      </button>
+    </div>
+
+    <!-- Messages Display Area (Auto-scrolls, padding ensures no input obstruction) -->
+    <div class="chat-messages-area" id="ai-chat-messages">
+      <!-- AI Welcome Greeting -->
+      <div class="chat-bubble bot">
+        <div class="bubble-avatar bot"><i class="fa-solid fa-robot"></i></div>
+        <div class="bubble-text-content">
+          Hello! I am your <strong>AI FORCE Cognitive Tutor</strong>.<br><br>
+          I can help clarify technical concepts, debug code, explain complex architectures, and guide your competency development. 
+          What would you like to explore today?
+        </div>
+      </div>
+    </div>
+
+    <!-- Fixed Bottom Message Input (Does not cover messages) -->
+    <div class="chat-input-container">
+      <form id="form-ai-chat" onsubmit="return false;" class="chat-input-box">
+        <input 
+          type="text" 
+          id="ai-user-input" 
+          class="chat-input-field" 
+          placeholder="Ask your question (e.g., 'Explain machine learning', 'How do transformers work?')..." 
+          autocomplete="off"
+        />
+        <button type="submit" id="btn-send-message" class="btn-send-chat" aria-label="Send Question">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
+      </form>
+    </div>
+
+  </main>
+
+  <script src="js/script.js"></script>
+  <script src="js/ai-assistant.js"></script>
+</body>
+</html>

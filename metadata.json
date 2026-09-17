@@ -1,0 +1,6 @@
+{
+  "name": "AI FORCE",
+  "description": "AI-powered Digital Capacity Building and Learning Management Portal for organizational training, competency development, and knowledge sharing.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Details – AI FORCE</title>
+  <meta name="description" content="Detailed curriculum syllabus and lesson plans for AI FORCE Capacity Connect." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-robot"></i></div>
+        <span>AI <span class="gradient-text">FORCE</span></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="courses.html" class="nav-link active">Courses</a>
+        <a href="ai-assistant.html" class="nav-link">AI Assistant</a>
+        <a href="live-classes.html" class="nav-link">Live Classes</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="courses.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-arrow-left"></i> Catalog</a>
+        <button class="hamburger-btn" aria-label="Open mobile menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="courses.html" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> Courses</a>
+      <a href="ai-assistant.html" class="mobile-nav-link"><i class="fa-solid fa-robot"></i> AI Assistant</a>
+      <a href="dashboard.html" class="mobile-nav-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+    </div>
+  </div>
+  <div class="nav-backdrop"></div>
+
+  <!-- Main Details Content -->
+  <main class="section" id="course-details-view">
+    <div class="container">
+      
+      <!-- Back Link -->
+      <a href="courses.html" style="display:inline-flex;align-items:center;gap:0.5rem;font-weight:600;color:var(--primary);margin-bottom:1.5rem;">
+        <i class="fa-solid fa-chevron-left"></i> Back to Courses Catalog
+      </a>
+
+      <!-- 2-Column Responsive Layout -->
+      <div style="display:grid;grid-template-columns:1fr;gap:2rem;" class="course-details-grid">
+        
+        <!-- Left: Course Overview & Modules -->
+        <div>
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+            <span class="course-category" id="cd-category">Artificial Intelligence</span>
+            <span id="cd-difficulty" class="course-difficulty diff-intermediate">Intermediate</span>
+          </div>
+
+          <h1 id="cd-title" style="font-size:2.2rem;font-weight:800;margin-bottom:1rem;line-height:1.25;">
+            Course Title Loading...
+          </h1>
+
+          <p id="cd-description" style="font-size:1.05rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1.5rem;">
+            Course description...
+          </p>
+
+          <!-- Key Metas -->
+          <div style="display:flex;flex-wrap:wrap;gap:1.5rem;padding:1rem 0;border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color);margin-bottom:2rem;font-size:0.92rem;color:var(--text-secondary);">
+            <div><i class="fa-solid fa-user-tie" style="color:var(--primary);margin-right:0.4rem;"></i> Instructor: <strong id="cd-instructor" style="color:var(--text-primary);">Instructor</strong></div>
+            <div><i class="fa-regular fa-clock" style="color:var(--secondary);margin-right:0.4rem;"></i> Duration: <strong id="cd-duration" style="color:var(--text-primary);">14 Hours</strong></div>
+            <div><i class="fa-solid fa-certificate" style="color:#f59e0b;margin-right:0.4rem;"></i> Certificate: <strong style="color:var(--text-primary);">Included</strong></div>
+          </div>
+
+          <!-- Video Player Simulation -->
+          <div style="position:relative;background:#000;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:16/9;margin-bottom:2.5rem;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Video Cover" style="width:100%;height:100%;object-fit:cover;opacity:0.65;" />
+            <button onclick="window.showToast('Lecture video stream initialized. Playing HD preview.', 'info')" style="position:absolute;width:68px;height:68px;border-radius:50%;background:var(--primary-gradient);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:var(--shadow-glow);cursor:pointer;">
+              <i class="fa-solid fa-play" style="margin-left:4px;"></i>
+            </button>
+            <div style="position:absolute;bottom:12px;left:16px;color:#fff;font-size:0.85rem;background:rgba(0,0,0,0.6);padding:0.25rem 0.65rem;border-radius:4px;">
+              <i class="fa-solid fa-film"></i> Module 1: Architecture Overview Preview
+            </div>
+          </div>
+
+          <!-- Module Curriculum Accordion -->
+          <h2 style="font-size:1.45rem;font-weight:800;margin-bottom:1.25rem;">
+            Competency Syllabus & Lesson Modules
+          </h2>
+          <div id="cd-modules-list">
+            <!-- Rendered by courses.js -->
+          </div>
+
+        </div>
+
+        <!-- Right: Enrollment & AI Assistant Sidebar -->
+        <div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:1.75rem;box-shadow:var(--shadow-sm);position:sticky;top:90px;">
+            <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem;">Capacity Track Actions</h3>
+            <p style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:1.25rem;">
+              Enrolling grants immediate access to all modules, practical labs, diagnostic assessments, and mentor assistance.
+            </p>
+
+            <button class="btn btn-primary btn-lg" id="cd-enroll-btn" style="width:100%;margin-bottom:1rem;">
+              <i class="fa-solid fa-plus"></i> Enroll in Competency Track
+            </button>
+
+            <a href="ai-assistant.html" class="btn btn-secondary" style="width:100%;margin-bottom:1.5rem;">
+              <i class="fa-solid fa-sparkles"></i> Ask AI Tutor About Syllabus
+            </a>
+
+            <div style="border-top:1px solid var(--border-color);padding-top:1.25rem;">
+              <h4 style="font-size:0.95rem;font-weight:700;margin-bottom:0.65rem;">Track Includes:</h4>
+              <ul style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.85rem;color:var(--text-secondary);">
+                <li><i class="fa-solid fa-check" style="color:var(--success);margin-right:0.4rem;"></i> 100% Online & Self-Paced</li>
+                <li><i class="fa-solid fa-check" style="color:var(--success);margin-right:0.4rem;"></i> 24/7 AI Doubt Resolution Support</li>
+                <li><i class="fa-solid fa-check" style="color:var(--success);margin-right:0.4rem;"></i> Practical Hands-On Labs</li>
+                <li><i class="fa-solid fa-check" style="color:var(--success);margin-right:0.4rem;"></i> Tamper-Proof Digital Certificate</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script src="js/courses.js"></script>
+</body>
+</html>

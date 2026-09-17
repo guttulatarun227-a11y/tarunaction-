@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile – AI FORCE Portal</title>
+  <meta name="description" content="Learner and Member Profile Management on AI FORCE." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-robot"></i></div>
+        <span>AI <span class="gradient-text">FORCE</span></span>
+        <span class="brand-badge">Profile</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="ai-assistant.html" class="nav-link">AI Assistant</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+        <button class="hamburger-btn" aria-label="Open mobile menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="courses.html" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> Courses</a>
+      <a href="dashboard.html" class="mobile-nav-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+    </div>
+  </div>
+  <div class="nav-backdrop"></div>
+
+  <!-- Profile Content Area -->
+  <main class="section">
+    <div class="container">
+      
+      <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:2rem;" class="profile-layout-grid">
+        
+        <!-- Profile Card Header -->
+        <div class="card-panel" style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+          <div class="user-avatar-sm" style="width:84px;height:84px;font-size:2.2rem;" id="profile-avatar-large">A</div>
+          <div style="flex-grow:1;">
+            <h1 style="font-size:1.6rem;font-weight:800;margin-bottom:0.25rem;" id="profile-display-name">Aarav Sharma</h1>
+            <p style="color:var(--text-secondary);font-size:0.95rem;margin-bottom:0.5rem;" id="profile-display-sub">
+              Student • Department of Artificial Intelligence & Data Science
+            </p>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <span class="badge-status badge-active" id="profile-role-badge">Student</span>
+              <span class="badge-status" style="background:var(--primary-light);color:var(--primary);" id="profile-id-badge">ID: AF-2026-9812</span>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-outline btn-sm" onclick="logoutUser()" style="color:var(--danger);border-color:var(--danger);">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+            </button>
+          </div>
+        </div>
+
+        <!-- Edit Profile Form -->
+        <div class="card-panel">
+          <div class="panel-header">
+            <h2 class="panel-title"><i class="fa-regular fa-id-card" style="color:var(--primary);margin-right:0.4rem;"></i> Personal & Academic Details</h2>
+            <span style="font-size:0.8rem;color:var(--text-muted);">Synced to LocalStorage</span>
+          </div>
+
+          <form id="form-edit-profile" style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+            
+            <div class="form-group">
+              <label class="form-label" for="edit-name">Full Name</label>
+              <input type="text" id="edit-name" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="edit-email">Official Email</label>
+              <input type="email" id="edit-email" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="edit-mobile">Mobile Number</label>
+              <input type="tel" id="edit-mobile" class="form-input" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="edit-department">Department / Specialization</label>
+              <input type="text" id="edit-department" class="form-input" />
+            </div>
+
+            <div style="grid-column: 1 / -1;display:flex;justify-content:flex-end;">
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-floppy-disk"></i> Save Profile Changes
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Earned Credentials & Active Progress -->
+        <div class="card-panel">
+          <div class="panel-header">
+            <h3 class="panel-title"><i class="fa-solid fa-award" style="color:#f59e0b;margin-right:0.4rem;"></i> My Earned Digital Credentials</h3>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr;gap:1rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:1rem;border-radius:var(--radius-md);background:var(--bg-secondary);flex-wrap:wrap;gap:0.75rem;">
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <i class="fa-solid fa-certificate" style="font-size:1.75rem;color:#f59e0b;"></i>
+                <div>
+                  <div style="font-weight:700;">Applied Machine Learning & Deep Neural Networks</div>
+                  <div style="font-size:0.8rem;color:var(--text-muted);">Issued Sept 16, 2026 • Verified ID: AF-CERT-2026-88421</div>
+                </div>
+              </div>
+              <a href="certificates.html" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-eye"></i> View Certificate
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = JSON.parse(localStorage.getItem("aiforce_user") || "{}");
+
+      const nameInput = document.getElementById("edit-name");
+      const emailInput = document.getElementById("edit-email");
+      const mobileInput = document.getElementById("edit-mobile");
+      const deptInput = document.getElementById("edit-department");
+
+      if (nameInput && user.fullName) nameInput.value = user.fullName;
+      if (emailInput && user.email) emailInput.value = user.email;
+      if (mobileInput && user.mobile) mobileInput.value = user.mobile || "+91 98765 43210";
+      if (deptInput && user.department) deptInput.value = user.department;
+
+      const dispName = document.getElementById("profile-display-name");
+      const dispSub = document.getElementById("profile-display-sub");
+      const avatar = document.getElementById("profile-avatar-large");
+      const roleBadge = document.getElementById("profile-role-badge");
+      const idBadge = document.getElementById("profile-id-badge");
+
+      if (dispName && user.fullName) dispName.textContent = user.fullName;
+      if (dispSub) dispSub.textContent = `${user.role || 'Student'} • ${user.department || 'Capacity Connect'}`;
+      if (avatar && user.fullName) avatar.textContent = user.fullName.charAt(0).toUpperCase();
+      if (roleBadge) roleBadge.textContent = user.role || 'Student';
+      if (idBadge && user.studentId) idBadge.textContent = `ID: ${user.studentId}`;
+
+      const form = document.getElementById("form-edit-profile");
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          user.fullName = nameInput.value.trim();
+          user.email = emailInput.value.trim();
+          user.mobile = mobileInput.value.trim();
+          user.department = deptInput.value.trim();
+
+          localStorage.setItem("aiforce_user", JSON.stringify(user));
+          window.showToast("Profile updated successfully!", "success");
+
+          if (dispName) dispName.textContent = user.fullName;
+          if (dispSub) dispSub.textContent = `${user.role || 'Student'} • ${user.department}`;
+          if (avatar) avatar.textContent = user.fullName.charAt(0).toUpperCase();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Classes – AI FORCE Portal</title>
+  <meta name="description" content="Interactive Live Virtual Classroom for Capacity Connect." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-robot"></i></div>
+        <span>AI <span class="gradient-text">FORCE</span></span>
+        <span class="brand-badge">Live Room</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="courses.html" class="nav-link">Courses</a>
+        <a href="ai-assistant.html" class="nav-link">AI Assistant</a>
+        <a href="live-classes.html" class="nav-link active">Live Classes</a>
+        <a href="assessments.html" class="nav-link">Assessments</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+        <button class="hamburger-btn" aria-label="Open mobile menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="courses.html" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> Courses</a>
+      <a href="ai-assistant.html" class="mobile-nav-link"><i class="fa-solid fa-robot"></i> AI Assistant</a>
+      <a href="live-classes.html" class="mobile-nav-link active"><i class="fa-solid fa-video"></i> Live Classes</a>
+      <a href="dashboard.html" class="mobile-nav-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+    </div>
+  </div>
+  <div class="nav-backdrop"></div>
+
+  <!-- Live Classroom View -->
+  <main class="section">
+    <div class="container">
+      
+      <!-- Session Header -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:700;color:var(--danger);background:rgba(239,68,68,0.1);padding:0.25rem 0.65rem;border-radius:9999px;margin-bottom:0.4rem;">
+            <span class="pulse-dot" style="background:var(--danger);"></span> LIVE BROADCAST
+          </div>
+          <h1 style="font-size:1.75rem;font-weight:800;letter-spacing:-0.02em;">
+            Capacity Lab: LLM Fine-Tuning & Prompt Strategies
+          </h1>
+          <p style="font-size:0.9rem;color:var(--text-secondary);">
+            Instructor: <strong>Dr. Anya Sharma</strong> • 42 Participants Connected
+          </p>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;">
+          <button class="btn btn-primary" id="btn-join-class">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Join Class
+          </button>
+          <button class="btn ctrl-btn-danger" id="btn-leave-class" style="display:none;">
+            <i class="fa-solid fa-phone-slash"></i> Leave Class
+          </button>
+        </div>
+      </div>
+
+      <!-- Video Panels (Desktop: Side-by-Side, Mobile: Stacked Vertically) -->
+      <div class="live-class-grid">
+        
+        <!-- Video Panel 1: Presenter / Instructor Stream -->
+        <div class="video-container" id="presenter-container">
+          <img 
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" 
+            alt="Instructor Presentation" 
+            class="video-element"
+          />
+          <div class="video-label-tag">
+            <i class="fa-solid fa-chalkboard-user"></i> Dr. Anya Sharma (Presenter)
+          </div>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.7);color:#fff;padding:0.25rem 0.65rem;border-radius:4px;font-size:0.75rem;font-weight:600;">
+            <i class="fa-solid fa-signal" style="color:#10b981;"></i> HD 1080p
+          </div>
+        </div>
+
+        <!-- Video Panel 2: Student Camera Feed (Uses real MediaDevices API) -->
+        <div class="video-container" id="student-container">
+          <video 
+            id="student-camera-feed" 
+            class="video-element" 
+            autoplay 
+            playsinline 
+            muted
+          ></video>
+          
+          <div class="video-label-tag">
+            <i class="fa-solid fa-user"></i> You (Student Feed)
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Video Action Controls Bar -->
+      <div class="video-controls-bar">
+        <button class="ctrl-btn btn-primary" id="btn-start-camera">
+          <i class="fa-solid fa-camera"></i> Start Camera
+        </button>
+        <button class="ctrl-btn ctrl-btn-danger" id="btn-stop-camera" style="display:none;">
+          <i class="fa-solid fa-camera-slash"></i> Stop Camera
+        </button>
+
+        <button class="ctrl-btn btn-secondary" id="btn-toggle-mic">
+          <i class="fa-solid fa-microphone"></i> Mute Mic
+        </button>
+
+        <button class="ctrl-btn btn-secondary" id="btn-toggle-video">
+          <i class="fa-solid fa-video"></i> Stop Video
+        </button>
+
+        <button class="ctrl-btn btn-secondary" id="btn-raise-hand">
+          <i class="fa-solid fa-hand"></i> Raise Hand
+        </button>
+      </div>
+
+      <!-- Live Chat & Session Stream Q&A -->
+      <div style="margin-top:2rem;display:grid;grid-template-columns:1fr;gap:1.5rem;" class="live-secondary-grid">
+        <div class="card-panel">
+          <div class="panel-header">
+            <h3 class="panel-title"><i class="fa-regular fa-comments" style="color:var(--primary);margin-right:0.4rem;"></i> Live Classroom Discussion & Questions</h3>
+            <span style="font-size:0.8rem;color:var(--text-muted);">Real-Time Feed</span>
+          </div>
+
+          <div id="live-chat-messages" style="height:190px;overflow-y:auto;padding-right:0.5rem;display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1rem;">
+            <div style="padding:0.35rem 0;font-size:0.85rem;border-bottom:1px dashed var(--border-color);">
+              <span style="color:var(--text-muted);font-style:italic;"><i class="fa-solid fa-bullhorn"></i> Session started. Dr. Sharma is presenting Slide 4.</span>
+            </div>
+            <div style="padding:0.35rem 0;font-size:0.85rem;border-bottom:1px dashed var(--border-color);">
+              <strong style="color:var(--secondary);">Priya Nair:</strong> Are we using LoRA or QLoRA for memory-constrained fine-tuning?
+            </div>
+            <div style="padding:0.35rem 0;font-size:0.85rem;border-bottom:1px dashed var(--border-color);">
+              <strong style="color:var(--primary);">Dr. Anya Sharma:</strong> We will demonstrate 4-bit QLoRA with BitsAndBytes in the second half!
+            </div>
+          </div>
+
+          <form id="form-live-chat" style="display:flex;gap:0.65rem;">
+            <input 
+              type="text" 
+              id="live-chat-input" 
+              class="form-input" 
+              placeholder="Post a question to the instructor..." 
+              style="flex-grow:1;"
+            />
+            <button type="submit" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-paper-plane"></i> Send
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- WebRTC Architecture Disclosure Banner -->
+      <div class="webrtc-notice">
+        <i class="fa-solid fa-triangle-exclamation" style="color:var(--warning);font-size:1.25rem;"></i>
+        <div>
+          <strong>Enterprise & Production Notice:</strong> This demonstration utilizes the client browser's native 
+          <code>navigator.mediaDevices</code> API for real-time camera and microphone validation. A production-grade multi-participant virtual auditorium employs a dedicated SFU/MCU WebRTC backend (e.g. LiveKit / Janus / Mediasoup) with end-to-end signaling.
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script src="js/live-classes.js"></script>
+</body>
+</html>

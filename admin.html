@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Portal – AI FORCE Capacity Connect</title>
+  <meta name="description" content="Faculty and Institutional Administrator Portal on AI FORCE." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <div class="app-layout">
+
+    <!-- Admin Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon"><i class="fa-solid fa-robot"></i></div>
+          <span>AI <span class="gradient-text">FORCE</span></span>
+        </a>
+        <button class="sidebar-close-btn" aria-label="Close sidebar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-title">Administration</div>
+        <button class="admin-tab-btn active sidebar-link" data-tab="courses" style="width:100%;border:none;background:transparent;cursor:pointer;">
+          <i class="fa-solid fa-graduation-cap"></i> <span>Manage Courses</span>
+        </button>
+        <button class="admin-tab-btn sidebar-link" data-tab="students" style="width:100%;border:none;background:transparent;cursor:pointer;">
+          <i class="fa-solid fa-users"></i> <span>Learners Directory</span>
+        </button>
+        <button class="admin-tab-btn sidebar-link" data-tab="assessments" style="width:100%;border:none;background:transparent;cursor:pointer;">
+          <i class="fa-solid fa-clipboard-question"></i> <span>Assessments & Rubrics</span>
+        </button>
+        <button class="admin-tab-btn sidebar-link" data-tab="reports" style="width:100%;border:none;background:transparent;cursor:pointer;">
+          <i class="fa-solid fa-chart-line"></i> <span>Audit Reports & Data</span>
+        </button>
+
+        <div class="sidebar-nav-title" style="margin-top:1.5rem;">Switch Views</div>
+        <a href="dashboard.html" class="sidebar-link">
+          <i class="fa-solid fa-gauge-high"></i> <span>Student View</span>
+        </a>
+        <a href="index.html" class="sidebar-link">
+          <i class="fa-solid fa-house"></i> <span>Public Home</span>
+        </a>
+        <a href="#" onclick="logoutUser(); return false;" class="sidebar-link" style="color:var(--danger);">
+          <i class="fa-solid fa-arrow-right-from-bracket" style="color:var(--danger);"></i> <span>Logout</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar-sm" style="background:var(--danger);">A</div>
+          <div class="user-info-text">
+            <div class="user-name-text">Administrator</div>
+            <div class="user-role-text">Faculty Admin Role</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-backdrop"></div>
+
+    <!-- Main Admin Content Area -->
+    <div class="main-content-wrapper">
+      
+      <!-- Top Bar -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle-btn" id="admin-menu-toggle" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="page-title-badge" style="border-color:rgba(239,68,68,0.3);color:var(--danger);background:rgba(239,68,68,0.08);">
+            <i class="fa-solid fa-shield-halved"></i> Institutional Admin Portal
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="theme-toggle-btn" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <a href="profile.html" class="btn-icon">
+            <i class="fa-solid fa-user-shield"></i>
+          </a>
+        </div>
+      </header>
+
+      <!-- Admin Body Container -->
+      <main class="dashboard-body">
+
+        <!-- Metrics Overview Row -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-blue">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="stat-details">
+              <div class="stat-value" id="admin-total-courses">6</div>
+              <div class="stat-label">Active Competency Tracks</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-green">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="stat-details">
+              <div class="stat-value" id="admin-total-enrollments">15,420</div>
+              <div class="stat-label">Total Enrollments</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-amber">
+              <i class="fa-solid fa-certificate"></i>
+            </div>
+            <div class="stat-details">
+              <div class="stat-value">3,892</div>
+              <div class="stat-label">Certificates Awarded</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon-box stat-icon-purple">
+              <i class="fa-solid fa-comments"></i>
+            </div>
+            <div class="stat-details">
+              <div class="stat-value">28,450</div>
+              <div class="stat-label">AI Doubts Resolved</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 1: MANAGE COURSES -->
+        <div class="admin-tab-panel" id="panel-courses">
+          <div class="admin-panel-box">
+            <div class="admin-panel-header">
+              <div>
+                <h2 style="font-size:1.25rem;font-weight:800;">Course Catalog Management</h2>
+                <p style="font-size:0.85rem;color:var(--text-muted);">
+                  Add, update syllabus, or retire institutional capacity building courses.
+                </p>
+              </div>
+              <button class="btn btn-primary" id="btn-open-add-course">
+                <i class="fa-solid fa-plus"></i> Add New Course
+              </button>
+            </div>
+
+            <!-- Table of Courses -->
+            <div class="admin-table-container">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Course</th>
+                    <th>Category</th>
+                    <th>Instructor</th>
+                    <th>Difficulty</th>
+                    <th>Enrolled</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-courses-tbody">
+                  <!-- Rendered dynamically by admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: MANAGE LEARNERS -->
+        <div class="admin-tab-panel hidden" id="panel-students">
+          <div class="admin-panel-box">
+            <div class="admin-panel-header">
+              <div>
+                <h2 style="font-size:1.25rem;font-weight:800;">Enrolled Learners Directory</h2>
+                <p style="font-size:0.85rem;color:var(--text-muted);">
+                  Monitor learner progress, departments, and competency milestones.
+                </p>
+              </div>
+            </div>
+
+            <div class="admin-table-container">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Student Name & ID</th>
+                    <th>Department</th>
+                    <th>Enrolled Tracks</th>
+                    <th>Overall Mastery</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div style="font-weight:700;">Aarav Sharma</div>
+                      <div style="font-size:0.75rem;color:var(--text-muted);">ID: AF-2026-9812 • student@aiforce.edu</div>
+                    </td>
+                    <td>AI & Data Science</td>
+                    <td>12 Tracks</td>
+                    <td>
+                      <div style="display:flex;align-items:center;gap:0.5rem;">
+                        <div class="progress-bar-bg" style="width:90px;margin:0;">
+                          <div class="progress-bar-fill" style="width:72%;"></div>
+                        </div>
+                        <span style="font-size:0.8rem;font-weight:700;">72%</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-status badge-active">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div style="font-weight:700;">Priya Nair</div>
+                      <div style="font-size:0.75rem;color:var(--text-muted);">ID: AF-2026-4421 • priya@aiforce.edu</div>
+                    </td>
+                    <td>Cloud & DevOps</td>
+                    <td>8 Tracks</td>
+                    <td>
+                      <div style="display:flex;align-items:center;gap:0.5rem;">
+                        <div class="progress-bar-bg" style="width:90px;margin:0;">
+                          <div class="progress-bar-fill" style="width:85%;"></div>
+                        </div>
+                        <span style="font-size:0.8rem;font-weight:700;">85%</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-status badge-active">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div style="font-weight:700;">Vikram Malhotra</div>
+                      <div style="font-size:0.75rem;color:var(--text-muted);">ID: AF-2026-1189 • vikram@aiforce.edu</div>
+                    </td>
+                    <td>Cybersecurity</td>
+                    <td>5 Tracks</td>
+                    <td>
+                      <div style="display:flex;align-items:center;gap:0.5rem;">
+                        <div class="progress-bar-bg" style="width:90px;margin:0;">
+                          <div class="progress-bar-fill" style="width:40%;"></div>
+                        </div>
+                        <span style="font-size:0.8rem;font-weight:700;">40%</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-status badge-pending">Needs Review</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: ASSESSMENTS MANAGEMENT -->
+        <div class="admin-tab-panel hidden" id="panel-assessments">
+          <div class="admin-panel-box">
+            <div class="admin-panel-header">
+              <div>
+                <h2 style="font-size:1.25rem;font-weight:800;">Competency Assessment Bank</h2>
+                <p style="font-size:0.85rem;color:var(--text-muted);">
+                  Configure diagnostic quizzes, question weights, and passing thresholds.
+                </p>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="window.showToast('Question authoring modal ready.', 'info')">
+                <i class="fa-solid fa-plus"></i> Add Question
+              </button>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr;gap:1rem;">
+              <div style="padding:1.25rem;background:var(--bg-secondary);border-radius:var(--radius-md);border-left:4px solid var(--primary);">
+                <div style="display:flex;justify-content:space-between;margin-bottom:0.35rem;">
+                  <strong style="color:var(--text-primary);">Q1: What is Artificial Intelligence?</strong>
+                  <span class="badge-status badge-active">Multiple Choice</span>
+                </div>
+                <div style="font-size:0.85rem;color:var(--text-muted);">Correct Answer: Simulation of human intelligence in machines programmed to think and learn.</div>
+              </div>
+
+              <div style="padding:1.25rem;background:var(--bg-secondary);border-radius:var(--radius-md);border-left:4px solid var(--primary);">
+                <div style="display:flex;justify-content:space-between;margin-bottom:0.35rem;">
+                  <strong style="color:var(--text-primary);">Q2: Which is an example of Supervised Learning?</strong>
+                  <span class="badge-status badge-active">Multiple Choice</span>
+                </div>
+                <div style="font-size:0.85rem;color:var(--text-muted);">Correct Answer: Predicting house prices using labelled historic sales features.</div>
+              </div>
+
+              <div style="padding:1.25rem;background:var(--bg-secondary);border-radius:var(--radius-md);border-left:4px solid var(--primary);">
+                <div style="display:flex;justify-content:space-between;margin-bottom:0.35rem;">
+                  <strong style="color:var(--text-primary);">Q3: What is the primary role of Gradient Descent?</strong>
+                  <span class="badge-status badge-active">Multiple Choice</span>
+                </div>
+                <div style="font-size:0.85rem;color:var(--text-muted);">Correct Answer: To minimize the objective loss function by iteratively updating model parameters.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: AUDIT REPORTS -->
+        <div class="admin-tab-panel hidden" id="panel-reports">
+          <div class="admin-panel-box">
+            <div class="admin-panel-header">
+              <div>
+                <h2 style="font-size:1.25rem;font-weight:800;">Capacity Building & Compliance Audit</h2>
+                <p style="font-size:0.85rem;color:var(--text-muted);">
+                  Download data reports compliant with institutional reporting guidelines.
+                </p>
+              </div>
+              <button class="btn btn-primary" id="btn-export-report">
+                <i class="fa-solid fa-file-arrow-down"></i> Export CSV Report
+              </button>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.5rem;margin-top:1rem;">
+              <div style="background:var(--bg-secondary);padding:1.5rem;border-radius:var(--radius-md);">
+                <h4 style="font-weight:800;margin-bottom:0.5rem;"><i class="fa-solid fa-chart-pie" style="color:var(--primary);margin-right:0.4rem;"></i> Department Enrollment</h4>
+                <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Highest capacity uptake in AI & Data Science (42%), followed by Cloud & DevOps (28%).</p>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:42%;"></div></div>
+              </div>
+
+              <div style="background:var(--bg-secondary);padding:1.5rem;border-radius:var(--radius-md);">
+                <h4 style="font-weight:800;margin-bottom:0.5rem;"><i class="fa-solid fa-shield-check" style="color:var(--success);margin-right:0.4rem;"></i> Certification Pass Rate</h4>
+                <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">87.4% of enrolled learners pass the competency threshold on their first attempt.</p>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:87.4%;background:var(--success);"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+
+  </div>
+
+  <!-- Add/Edit Course Modal Dialog -->
+  <div class="modal-overlay" id="course-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="modal-title-text">Add New Competency Course</h3>
+        <button class="modal-close-btn" id="btn-close-modal" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="form-course-modal" class="modal-body">
+        <input type="hidden" id="modal-edit-id" />
+
+        <div class="form-group">
+          <label class="form-label" for="modal-course-title">Course Title *</label>
+          <input type="text" id="modal-course-title" class="form-input" placeholder="e.g. Distributed Systems Architecture" required />
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label class="form-label" for="modal-course-category">Category Track</label>
+            <select id="modal-course-category" class="form-select">
+              <option value="Artificial Intelligence">Artificial Intelligence</option>
+              <option value="Cloud Computing">Cloud Computing</option>
+              <option value="Data Science">Data Science</option>
+              <option value="Cybersecurity">Cybersecurity</option>
+              <option value="Leadership">Leadership</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="modal-course-difficulty">Difficulty Level</label>
+            <select id="modal-course-difficulty" class="form-select">
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label class="form-label" for="modal-course-instructor">Lead Instructor *</label>
+            <input type="text" id="modal-course-instructor" class="form-input" placeholder="e.g. Prof. Priya Raman" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="modal-course-duration">Duration *</label>
+            <input type="text" id="modal-course-duration" class="form-input" placeholder="e.g. 10 Hours" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="modal-course-image">Image URL (Optional)</label>
+          <input type="url" id="modal-course-image" class="form-input" placeholder="https://images.unsplash.com/photo-..." />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="modal-course-desc">Curriculum Overview</label>
+          <textarea id="modal-course-desc" class="form-input" rows="3" placeholder="Explain the key competencies and knowledge outcomes of this course..."></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="btn-cancel-modal">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-course">Save & Publish Track</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
